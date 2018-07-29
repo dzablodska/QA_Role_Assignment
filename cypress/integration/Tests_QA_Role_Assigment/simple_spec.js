@@ -17,9 +17,10 @@ describe('My First Test', function() {
         cy.get('#repository_name')
             .type('Test_repo')
             .should('have.value', 'Test_repo')
+        //Create README.md file in repository and commit&push it via Github UI
+        cy.get('#repository_auto_init').click()
         cy.get('.btn.btn-primary.first-in-line').click()
 
-       //Create README.md file in repository and commit&push it via Github UI
         //Delete repository
         cy.get('a[href="/dzablodska/Test_repo/settings"]').click()
         cy.get('div.Box--danger > ul > li:nth-child(4) summary').click()
