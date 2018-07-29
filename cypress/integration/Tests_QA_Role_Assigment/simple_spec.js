@@ -1,6 +1,6 @@
 describe('My First Test', function() {
     it('Visits the github', function() {
-
+        cy.clearLocalStorage()
         // Login in github with your account
         cy.visit('https://github.com/login')
         cy.get('#login_field')
@@ -21,6 +21,12 @@ describe('My First Test', function() {
 
        //Create README.md file in repository and commit&push it via Github UI
         //Delete repository
+        cy.get('a[href="/dzablodska/Test_repo/settings"]').click()
+        cy.get('div.Box--danger > ul > li:nth-child(4) summary').click()
+        cy.get('input[name="verify"]:visible').click()
+        .type('Test_repo')
+        cy.get('form[action="/dzablodska/Test_repo/settings/delete"] button.btn-danger[type="submit"][data-disable-invalid]').click()
+
 
     })
 })
